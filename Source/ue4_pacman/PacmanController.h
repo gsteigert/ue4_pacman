@@ -14,19 +14,19 @@
 UCLASS()
 class UE4_PACMAN_API APacmanController : public APlayerController
 {
-	GENERATED_BODY()
-	
-protected:
-	void SetupInputComponent() override;
-	APacmanPawn* GetPacmanPawn();
+    GENERATED_BODY()
 
-	UFUNCTION(BlueprintCallable)
-	void MoveUp();
-	UFUNCTION(BlueprintCallable)
-	void MoveDown();
-	UFUNCTION(BlueprintCallable)
-	void MoveLeft();
-	UFUNCTION(BlueprintCallable)
-	void MoveRight();
+protected:
+    void SetupInputComponent() override;
+    APacmanPawn* GetPacmanPawn();
+
+    UFUNCTION(BlueprintCallable)
+    void MoveUp();
+    UFUNCTION(BlueprintCallable)
+    void MoveDown();
+    UFUNCTION(BlueprintCallable)
+    void MoveLeft();
+    UFUNCTION(BlueprintCallable)
+    void MoveRight();
 
 };
