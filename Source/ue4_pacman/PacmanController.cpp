@@ -1,7 +1,7 @@
 #include "PacmanController.h"
-#include "Runtime/Core/Public/Math/Vector.h"
+#include "Math/Vector.h"
 
-APacmanPawn* APacmanController::GetPacmanPawn() {
+APacmanPawn* APacmanController::GetPacmanPawn() const {
     return Cast<APacmanPawn>(GetPawn());
 }
 

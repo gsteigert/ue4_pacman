@@ -18,7 +18,7 @@ class UE4_PACMAN_API APacmanController : public APlayerController
 
 protected:
     void SetupInputComponent() override;
-    APacmanPawn* GetPacmanPawn();
+    APacmanPawn* GetPacmanPawn() const;
 
 private:
     void MoveUpPressed();
