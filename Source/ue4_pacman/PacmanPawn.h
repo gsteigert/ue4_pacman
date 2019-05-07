@@ -11,17 +11,16 @@ class UE4_PACMAN_API APacmanPawn : public APawn
 
 public:
     APacmanPawn();
-    void SetDirection(const FVector& direction);
-    virtual void Tick(float DeltaTime) override;
+    void SetVerticalMovementInput(const float value);
+    void SetHorizontalMovementInput(const float value);
+    virtual void Tick(const float DeltaTime) override;
 
 protected:
     virtual void BeginPlay() override;
 
 private:
-    UPROPERTY(EditAnywhere, Category = "Movement")
-    float Speed = 10.0f;
-
     UPROPERTY(VisibleAnywhere, Category = "Movement")
-    FVector Direction;
-
+    FVector VerticalDirection;
+    UPROPERTY(VisibleAnywhere, Category = "Movement")
+    FVector HorizontalDirection;
 };

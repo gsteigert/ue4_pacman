@@ -20,13 +20,12 @@ protected:
     void SetupInputComponent() override;
     APacmanPawn* GetPacmanPawn();
 
-    UFUNCTION(BlueprintCallable)
-    void MoveUp();
-    UFUNCTION(BlueprintCallable)
-    void MoveDown();
-    UFUNCTION(BlueprintCallable)
-    void MoveLeft();
-    UFUNCTION(BlueprintCallable)
-    void MoveRight();
+private:
+    void MoveUpPressed();
+    void MoveDownPressed();
+    void MoveUpOrDownReleased();
+    void MoveLeftPressed();
+    void MoveRightPressed();
+    void MoveRightOrLeftReleased();
 
 };
