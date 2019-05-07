@@ -1,11 +1,15 @@
 #include "PacmanController.h"
 #include "Math/Vector.h"
 
-APacmanPawn* APacmanController::GetPacmanPawn() const {
+#define PAWN_IS_AVAILABLE GetPawn() != nullptr
+
+APacmanPawn* APacmanController::GetPacmanPawn() const
+{
     return Cast<APacmanPawn>(GetPawn());
 }
 
-void APacmanController::SetupInputComponent() {
+void APacmanController::SetupInputComponent()
+{
     Super::SetupInputComponent();
     UE_LOG(LogTemp, Log, TEXT("[PacmanController] SetupInputComponent()"));
 
@@ -19,26 +23,44 @@ void APacmanController::SetupInputComponent() {
     InputComponent->BindAction("MoveLeft", IE_Released, this, &APacmanController::MoveRightOrLeftReleased);
 }
 
-void APacmanController::MoveUpPressed() {
-    GetPacmanPawn()->SetVerticalMovementInput(1.0f);
+void APacmanController::MoveUpPressed()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetVerticalMovementInput(1.0f);
+    }
 }
 
-void APacmanController::MoveDownPressed() {
-    GetPacmanPawn()->SetVerticalMovementInput(-1.0f);
+void APacmanController::MoveDownPressed()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetVerticalMovementInput(-1.0f);
+    }
 }
 
-void APacmanController::MoveUpOrDownReleased() {
-    GetPacmanPawn()->SetVerticalMovementInput(0.0f);
+void APacmanController::MoveUpOrDownReleased()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetVerticalMovementInput(0.0f);
+    }
 }
 
-void APacmanController::MoveRightPressed() {
-    GetPacmanPawn()->SetHorizontalMovementInput(1.0f);
+void APacmanController::MoveRightPressed()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetHorizontalMovementInput(1.0f);
+    }
 }
 
-void APacmanController::MoveLeftPressed() {
-    GetPacmanPawn()->SetHorizontalMovementInput(-1.0f);
+void APacmanController::MoveLeftPressed()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetHorizontalMovementInput(-1.0f);
+    }
 }
 
-void APacmanController::MoveRightOrLeftReleased() {
-    GetPacmanPawn()->SetHorizontalMovementInput(0.0f);
+void APacmanController::MoveRightOrLeftReleased()
+{
+    if (PAWN_IS_AVAILABLE) {
+        GetPacmanPawn()->SetHorizontalMovementInput(0.0f);
+    }
 }

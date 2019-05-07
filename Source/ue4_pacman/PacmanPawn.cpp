@@ -10,6 +10,7 @@ void APacmanPawn::BeginPlay()
 {
     Super::BeginPlay();
 
+    OnActorHit.AddDynamic(this, &APacmanPawn::OnHit);
     OnActorBeginOverlap.AddDynamic(this, &APacmanPawn::OnOverlapBegin);
 }
 
@@ -21,13 +22,13 @@ void APacmanPawn::Tick(float DeltaTime)
 }
 
 void APacmanPawn::SetVerticalMovementInput(const float value) {
-    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%d)"), value);
+    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%f)"), value);
 
     VerticalDirection = FVector::UpVector * FMath::Clamp(value, -1.0f, 1.0f);
 }
 
 void APacmanPawn::SetHorizontalMovementInput(const float value) {
-    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%d)"), value);
+    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%f)"), value);
 
     HorizontalDirection = FVector::RightVector * FMath::Clamp(value, -1.0f, 1.0f);
 }
@@ -42,8 +43,28 @@ void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
     }
 }
 
-void APacmanPawn::ConsumeRegularFoodie(AFoodieActor* foodie) {
+void APacmanPawn::ConsumeRegularFoodie(AFoodieActor* foodie)
+{
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] ConsumeRegularFoodie(%s)"), *foodie->GetName());
 
     foodie->Consume();
+}
+
+void APacmanPawn::OnHit(AActor* selfActor, AActor* otherActor, FVector normalImpulse, const FHitResult& hit)
+{
+    if (otherActor->ActorHasTag("Enemy")) {
+        UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] OnHit(otherActor=%s, hit=%s)"),
+            *otherActor->GetName(), *hit.ToString());
+
+        Die();
+    }
+}
+
+void APacmanPawn::Die()
+{
+    if (IsPendingKillPending()) {
+        return;
+    }
+
+    Destroy();
 }

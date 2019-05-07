@@ -18,12 +18,10 @@ public:
     void SetVerticalMovementInput(const float value);
     void SetHorizontalMovementInput(const float value);
 
-    UFUNCTION()
-    void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
-
 protected:
     virtual void BeginPlay() override;
     void ConsumeRegularFoodie(AFoodieActor* foodie);
+    void Die();
 
 private:
     UPROPERTY(VisibleAnywhere, Category = "Movement")
@@ -31,4 +29,10 @@ private:
 
     UPROPERTY(VisibleAnywhere, Category = "Movement")
     FVector HorizontalDirection;
+
+    UFUNCTION()
+    void OnHit(AActor* selfActor, AActor* otherActor, FVector normalImpulse, const FHitResult& hit);
+
+    UFUNCTION()
+    void OnOverlapBegin(AActor* overlappedActor, AActor* otherActor);
 };
