@@ -15,7 +15,7 @@ class AEatFoodieTest : public AFunctionalTest
 public:
     AEatFoodieTest();
 
-    UPROPERTY(EditAnywhere, Category = "Functional Testing")
+    UPROPERTY(EditAnywhere, Category = "Test References")
     AFoodieActor* TargetFoodie;
 
 protected:

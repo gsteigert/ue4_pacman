@@ -13,6 +13,9 @@ public:
     ATeleporterActor();
     void TeleportToTarget(AActor* actor);
 
+    DECLARE_EVENT_TwoParams(ATeleporterActor, FTeleportedEvent, ATeleporterActor*, ATeleporterActor*)
+    FTeleportedEvent& OnTeleported() { return TeleportedEvent; }
+
 protected:
     virtual void BeginPlay() override;
 
@@ -20,6 +23,8 @@ protected:
     ATeleporterActor* Target = nullptr;
 
 private:
+    FTeleportedEvent TeleportedEvent;
+
     UFUNCTION()
     void OnOverlapBegin(AActor* overlappedActor, AActor* otherActor);
 };

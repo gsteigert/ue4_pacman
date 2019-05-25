@@ -47,6 +47,7 @@ void ATeleporterActor::TeleportToTarget(AActor* actor)
     if (targetSpawn)
     {
         actor->SetActorLocation(targetSpawn->GetComponentLocation());
+        TeleportedEvent.Broadcast(this, Target);
     }
     else
     {
