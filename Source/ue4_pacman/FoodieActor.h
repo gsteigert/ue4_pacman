@@ -9,14 +9,18 @@ class USoundCue;
 UCLASS()
 class UE4_PACMAN_API AFoodieActor : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	AFoodieActor();
-	void Consume();
+    GENERATED_BODY()
+
+public:
+    AFoodieActor();
+    void Consume();
+
+    DECLARE_EVENT(AFoodieActor, FFoodieEatenEvent)
+    FFoodieEatenEvent& OnFoodieEaten() { return FoodieEatenEvent; }
 
 private:
+    FFoodieEatenEvent FoodieEatenEvent;
+
     UPROPERTY(EditAnywhere, Category = "Sound Effects")
     USoundCue* RegularFoodieConsumptionSound;
-
 };

@@ -10,5 +10,6 @@ AFoodieActor::AFoodieActor()
 void AFoodieActor::Consume()
 {
     UGameplayStatics::PlaySound2D(this, RegularFoodieConsumptionSound);
+    FoodieEatenEvent.Broadcast();
     Destroy();
 }

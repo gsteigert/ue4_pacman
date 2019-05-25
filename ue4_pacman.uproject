@@ -9,8 +9,27 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
-				"Engine"
+				"Engine",
+				"FunctionalTesting"
 			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "FunctionalTestingEditor",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorTests",
+			"Enabled": true
+		},
+		{
+			"Name": "RuntimeTests",
+			"Enabled": true
+		},
+		{
+			"Name": "ScreenshotTools",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
