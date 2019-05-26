@@ -24,13 +24,13 @@ void APacmanPawn::Tick(float DeltaTime)
 void APacmanPawn::SetVerticalMovementInput(const float value) {
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%f)"), value);
 
-    VerticalDirection = FVector::UpVector * FMath::Clamp(value, -1.0f, 1.0f);
+    VerticalDirection = GetActorUpVector() * FMath::Clamp(value, -1.0f, 1.0f);
 }
 
 void APacmanPawn::SetHorizontalMovementInput(const float value) {
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%f)"), value);
 
-    HorizontalDirection = FVector::RightVector * FMath::Clamp(value, -1.0f, 1.0f);
+    HorizontalDirection = GetActorRightVector() * FMath::Clamp(value, -1.0f, 1.0f);
 }
 
 void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
