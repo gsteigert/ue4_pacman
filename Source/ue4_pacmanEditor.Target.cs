@@ -8,7 +8,6 @@ public class ue4_pacmanEditorTarget : TargetRules
 	public ue4_pacmanEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-
 		ExtraModuleNames.AddRange( new string[] { "ue4_pacman" } );
 	}
 }

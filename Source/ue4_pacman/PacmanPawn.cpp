@@ -22,13 +22,13 @@ void APacmanPawn::Tick(float DeltaTime)
 }
 
 void APacmanPawn::SetVerticalMovementInput(const float value) {
-    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%f)"), value);
+    //UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%f)"), value);
 
     VerticalDirection = GetActorUpVector() * FMath::Clamp(value, -1.0f, 1.0f);
 }
 
 void APacmanPawn::SetHorizontalMovementInput(const float value) {
-    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%f)"), value);
+    //UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%f)"), value);
 
     HorizontalDirection = GetActorRightVector() * FMath::Clamp(value, -1.0f, 1.0f);
 }

@@ -1,4 +1,5 @@
 #include "EnemyPawn.h"
+#include "EnemyPawnMovement.h"
 
 AEnemyPawn::AEnemyPawn()
 {
@@ -13,9 +14,4 @@ void AEnemyPawn::BeginPlay()
 void AEnemyPawn::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-}
-
-void AEnemyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-    Super::SetupPlayerInputComponent(PlayerInputComponent);
 }

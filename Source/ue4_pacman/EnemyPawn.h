@@ -11,12 +11,15 @@ class UE4_PACMAN_API AEnemyPawn : public APawn
 
 public:
     AEnemyPawn();
+    virtual void Tick(float DeltaTime) override;
 
 protected:
     virtual void BeginPlay() override;
 
-public:
-    virtual void Tick(float DeltaTime) override;
-    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+private:
+    UPROPERTY(VisibleAnywhere, Category = "Movement")
+    FVector VerticalDirection;
 
+    UPROPERTY(VisibleAnywhere, Category = "Movement")
+    FVector HorizontalDirection;
 };
