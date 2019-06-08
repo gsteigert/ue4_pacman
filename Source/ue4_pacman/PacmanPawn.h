@@ -18,6 +18,9 @@ public:
     void SetVerticalMovementInput(const float value);
     void SetHorizontalMovementInput(const float value);
 
+    DECLARE_EVENT(APacmanPawn, FPacmanDiedEvent)
+    FPacmanDiedEvent& OnPacmanDied() { return PacmanDiedEvent; }
+
 protected:
     virtual void BeginPlay() override;
     void ConsumeRegularFoodie(AFoodieActor* foodie);
@@ -35,4 +38,6 @@ private:
 
     UFUNCTION()
     void OnOverlapBegin(AActor* overlappedActor, AActor* otherActor);
+
+    FPacmanDiedEvent PacmanDiedEvent;
 };

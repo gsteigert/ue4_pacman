@@ -10,7 +10,7 @@ UCLASS()
 class UE4_PACMAN_API AFoodieActor : public AActor
 {
     GENERATED_BODY()
-
+    
 public:
     AFoodieActor();
     void Consume();

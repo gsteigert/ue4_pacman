@@ -66,5 +66,6 @@ void APacmanPawn::Die()
         return;
     }
 
+    PacmanDiedEvent.Broadcast();
     Destroy();
 }
