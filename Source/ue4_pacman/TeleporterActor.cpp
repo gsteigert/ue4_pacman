@@ -2,14 +2,14 @@
 #include "Engine\Classes\Components\SceneComponent.h"
 #include "Engine\Public\TimerManager.h"
 
-ATeleporterActor::ATeleporterActor()
-{
-}
-
 void ATeleporterActor::BeginPlay()
 {
     Super::BeginPlay();
 
+    // assertion macros are useful for ensuring the context is valid prior to running this code,
+    // exposing potential issues earlier; see: https://docs.unrealengine.com/en-US/Programming/Assertions/index.html
+
+    // check will halt execution with a meaningful error message
     checkf(Target != nullptr, TEXT("[%s] No target teleporter was set"), *GetName());
     checkf(Target != this, TEXT("[%s] Target teleporter cannot be self"), *GetName());
     checkf(IsValid(Target), TEXT("[%s] Target teleporter is not valid"), *GetName());
@@ -28,12 +28,12 @@ void ATeleporterActor::OnOverlapBegin(AActor* overlappedActor, AActor* otherActo
         return;
     }
 
-    // calling SetActorLocation within OnOverlapBegin resulted in odd behaviors:
-    // (1) OnOverlapBegin was firing multiple times
+    // calling SetActorLocation within OnOverlapBegin results in odd behaviors:
+    // (1) OnOverlapBegin fires multiple times
     // (2) the pacman would carry velocity after getting teleported
     // (3) the pacman would teleport between the teleporters indefinitely
 
-    // to workaround that, the teleportation will be postponed to the next tick
+    // to workaround that, the teleportation will be postponed to the next frame
     GetWorldTimerManager().SetTimerForNextTick([otherActor, this]() { TeleportToTarget(otherActor); });
 }
 
@@ -44,13 +44,11 @@ void ATeleporterActor::TeleportToTarget(AActor* actor)
 
     USceneComponent* targetSpawn = Cast<USceneComponent>(Target->GetDefaultSubobjectByName("Spawn"));
 
-    if (targetSpawn)
+    // ensure won't halt execution but will log an error and generate a debug call stack
+    if (ensureMsgf(targetSpawn != nullptr,
+        TEXT("[%s] Target spawn location not found!"), *GetName()))
     {
         actor->SetActorLocation(targetSpawn->GetComponentLocation());
         TeleportedEvent.Broadcast(this, Target);
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[%s] Spawn location not found!"), *GetName());
     }
 }

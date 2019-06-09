@@ -1,10 +1,11 @@
 # Pacman
 
-Developed with Unreal Engine 4
+A Pacman game developed with Unreal Engine 4 to learn how to use this engine.
+Source code comments will be verbose, since the goal of this project is learning.
 
 ## Running the functional tests
 
-1. Open Unreal Engine
+1. Open the project in Unreal Engine editor.
 1. Head to `Window > Test Automation`
 1. Make sure a device is selected in the `Session Browser` tab
 1. In the `Automation` tab, select `Product Tests`

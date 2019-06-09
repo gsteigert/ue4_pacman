@@ -4,13 +4,16 @@
 #include "GameFramework/Actor.h"
 #include "TeleporterActor.generated.h"
 
+/**
+ * Teleports any pawn that enters the trigger volume to another teleporter.
+ * The target (destination) teleporter needs to be set manually, through the editor.
+ */
 UCLASS()
 class UE4_PACMAN_API ATeleporterActor : public AActor
 {
     GENERATED_BODY()
 
 public:
-    ATeleporterActor();
     void TeleportToTarget(AActor* actor);
 
     DECLARE_EVENT_TwoParams(ATeleporterActor, FTeleportedEvent, ATeleporterActor*, ATeleporterActor*)
