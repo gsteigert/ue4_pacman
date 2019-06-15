@@ -1,7 +1,12 @@
+# Folders
 Binaries
+Content/InfinityBladeEffects
+Content/InfinityBladeGrassLands
 DerivedDataCache
 Intermediate
 Saved
+
+# Files
 .vscode
 .vs
 *.VC.db
