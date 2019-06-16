@@ -14,6 +14,9 @@ void ATeleportPawnTest::PrepareTest()
     Super::PrepareTest();
     LogMessage("[TeleportPawnTest] PrepareTest()");
 
+    checkf(RightTeleporter != nullptr, TEXT("Teleporter not set: RightTeleporter"));
+    checkf(LeftTeleporter != nullptr, TEXT("Teleporter not set: LeftTeleporter"));
+
     PacmanController = Cast<APacmanController>(GetWorld()->GetFirstPlayerController());
     RightTeleporter->OnTeleported().AddUObject(this, &ATeleportPawnTest::OnTeleportedFromRight);
     LeftTeleporter->OnTeleported().AddUObject(this, &ATeleportPawnTest::OnTeleportedFromLeft);
@@ -42,8 +45,8 @@ void ATeleportPawnTest::OnTeleportedFromRight(ATeleporterActor* origin, ATelepor
 {
     LogMessage("[TeleportPawnTest] OnTeleportedFromRight()");
 
-    AssertEqual_String(origin->GetName(), "RightTeleporterBP", "teleporter name");
-    AssertEqual_String(destination->GetName(), "LeftTeleporterBP", "teleporter name");
+    AssertEqual_String(origin->GetName(), "RightTeleporter", "teleporter name");
+    AssertEqual_String(destination->GetName(), "LeftTeleporter", "teleporter name");
 
     FinishTest(EFunctionalTestResult::Succeeded, "Pacman teleported");
 }
