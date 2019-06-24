@@ -11,3 +11,8 @@ Source code comments will be verbose, since the goal of this project is learning
 1. In the `Automation` tab, select `Product Tests`
 1. Select the checkbox to the left of `Project > Functional Tests`
 1. Hit the `Start Tests` button
+
+## Debugging the path finding algorithm
+
+After pressing the Play button, just tap the single quote key.
+Use the numpad keys to toggle specific features, like navmesh, AI, behavior tree, etc.
