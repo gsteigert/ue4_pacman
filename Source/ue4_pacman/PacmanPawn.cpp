@@ -18,7 +18,10 @@ void APacmanPawn::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-    AddMovementInput(VerticalDirection + HorizontalDirection);
+    if (!Frozen)
+    {
+        AddMovementInput(VerticalDirection + HorizontalDirection);
+    }
 }
 
 void APacmanPawn::SetVerticalMovementInput(const float value) {

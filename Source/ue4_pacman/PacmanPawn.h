@@ -21,6 +21,9 @@ public:
     DECLARE_EVENT(APacmanPawn, FPacmanDiedEvent)
     FPacmanDiedEvent& OnPacmanDied() { return PacmanDiedEvent; }
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+    bool Frozen = true;
+
 protected:
     virtual void BeginPlay() override;
     void ConsumeRegularFoodie(AFoodieActor* foodie);
