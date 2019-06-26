@@ -23,8 +23,6 @@ protected:
 public:
     void MoveUpPressed();
     void MoveDownPressed();
-    void MoveUpOrDownReleased();
     void MoveLeftPressed();
     void MoveRightPressed();
-    void MoveRightOrLeftReleased();
 };

@@ -20,20 +20,27 @@ void APacmanPawn::Tick(float DeltaTime)
 
     if (!Frozen)
     {
-        AddMovementInput(VerticalDirection + HorizontalDirection);
+        AddMovementInput(GetActorForwardVector());
     }
 }
 
-void APacmanPawn::SetVerticalMovementInput(const float value) {
-    //UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetVerticalMovementInput(%f)"), value);
+void APacmanPawn::SetDirection(const FVector direction)
+{
+    // imagine an airplane making these rotational movements and you'll end up with:
+    // Pitch = around Y axis, Yaw = around the Z axis, Roll = around the X axis
 
-    VerticalDirection = -GetActorRightVector() * FMath::Clamp(value, -1.0f, 1.0f);
-}
-
-void APacmanPawn::SetHorizontalMovementInput(const float value) {
-    //UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] SetHorizontalMovementInput(%f)"), value);
-
-    HorizontalDirection = GetActorForwardVector() * FMath::Clamp(value, -1.0f, 1.0f);
+    if (direction == FVector::UpVector) {
+        SetActorRotation(FRotator(0, 270, 0));
+    }
+    else if (direction == FVector::DownVector) {
+        SetActorRotation(FRotator(0, 90, 0));
+    }
+    else if (direction == FVector::RightVector) {
+        SetActorRotation(FRotator(0, 0, 0));
+    }
+    else if (direction == FVector::LeftVector) {
+        SetActorRotation(FRotator(0, 180, 0));
+    }
 }
 
 void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)

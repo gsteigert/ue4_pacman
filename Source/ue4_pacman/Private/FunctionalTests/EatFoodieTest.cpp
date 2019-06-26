@@ -24,6 +24,7 @@ void AEatFoodieTest::StartTest()
     LogMessage("[EatFoodieTest] StartTest()");
 
     PacmanController->MoveRightPressed();
+    Cast<APacmanPawn>(PacmanController->GetPawn())->Frozen = false;
 }
 
 void AEatFoodieTest::Tick(float DeltaSeconds)
