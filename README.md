@@ -1,7 +1,8 @@
 # Pacman
 
-A Pacman game developed with Unreal Engine 4 to learn how to use this engine.
+A Pacman Remake developed with Unreal Engine 4 to learn how to use this engine.
 Source code comments will be verbose, since the goal of this project is learning.
+Some [videos](https://www.youtube.com/playlist?list=PLniLEzAERZnIWAflpOPpguI-1GcJ7tTq-) were uploaded to YouTube to better track the game state, as it's developed.
 
 ## Running the functional tests
 
@@ -14,5 +15,4 @@ Source code comments will be verbose, since the goal of this project is learning
 
 ## Debugging the path finding algorithm
 
-After pressing the Play button, just tap the single quote key.
-Use the numpad keys to toggle specific features, like navmesh, AI, behavior tree, etc.
+After pressing the `Play button`, just tap the single quote key. Then use the numpad keys to toggle specific features, like navmesh, AI, behavior tree, etc.

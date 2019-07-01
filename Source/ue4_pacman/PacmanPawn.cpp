@@ -39,7 +39,7 @@ void APacmanPawn::SetDirection(const FVector direction)
         SetActorRotation(FRotator(0, 0, 0));
     }
     else if (direction == FVector::LeftVector) {
-        SetActorRotation(FRotator(0, 180, 0));
+        SetActorRotation(FRotator(0, 180, 180));
     }
 }
 
