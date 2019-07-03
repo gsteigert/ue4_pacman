@@ -6,6 +6,12 @@
 
 class USoundCue;
 
+UENUM()
+enum class EFoodieType : uint8 {
+    Regular,
+    PowerUp
+};
+
 UCLASS()
 class UE4_PACMAN_API AFoodieActor : public AActor
 {
@@ -21,6 +27,9 @@ public:
 private:
     FFoodieEatenEvent FoodieEatenEvent;
 
-    UPROPERTY(EditAnywhere, Category = "Sound Effects")
-    USoundCue* RegularFoodieConsumptionSound;
+    UPROPERTY(EditAnywhere, Category = "Setup")
+    USoundCue* ConsumptionSound;
+
+    UPROPERTY(EditAnywhere, Category = "Setup")
+    EFoodieType FoddieType = EFoodieType::Regular;
 };

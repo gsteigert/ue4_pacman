@@ -9,9 +9,9 @@ AFoodieActor::AFoodieActor()
 
 void AFoodieActor::Consume()
 {
-    UE_LOG(LogTemp, Log, TEXT("[%s] Consuming self"), *GetName());
+    UE_LOG(LogTemp, Log, TEXT("[%s] Consuming self [type=%d]"), *GetName(), FoddieType);
 
-    UGameplayStatics::PlaySound2D(this, RegularFoodieConsumptionSound);
+    UGameplayStatics::PlaySound2D(this, ConsumptionSound);
     FoodieEatenEvent.Broadcast();
     Destroy();
 }

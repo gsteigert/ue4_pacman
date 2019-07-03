@@ -48,16 +48,10 @@ void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] OnOverlapBegin(overlappedActor=%s, otherActor=%s)"),
         *overlappedActor->GetName(), *otherActor->GetName());
 
-    if (otherActor->ActorHasTag("Foodie.Regular")) {
-        ConsumeRegularFoodie(Cast<AFoodieActor>(otherActor));
+    if (otherActor->ActorHasTag("Foodie.Regular")
+        || otherActor->ActorHasTag("Foodie.PowerUp")) {
+        Cast<AFoodieActor>(otherActor)->Consume();
     }
-}
-
-void APacmanPawn::ConsumeRegularFoodie(AFoodieActor* foodie)
-{
-    UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] ConsumeRegularFoodie(%s)"), *foodie->GetName());
-
-    foodie->Consume();
 }
 
 void APacmanPawn::OnHit(AActor* selfActor, AActor* otherActor, FVector normalImpulse, const FHitResult& hit)

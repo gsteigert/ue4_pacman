@@ -25,7 +25,6 @@ public:
 
 protected:
     virtual void BeginPlay() override;
-    void ConsumeRegularFoodie(AFoodieActor* foodie);
     void Die();
 
 private:

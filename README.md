@@ -16,3 +16,11 @@ Some [videos](https://www.youtube.com/playlist?list=PLniLEzAERZnIWAflpOPpguI-1Gc
 ## Debugging the path finding algorithm
 
 After pressing the `Play button`, just tap the single quote key. Then use the numpad keys to toggle specific features, like navmesh, AI, behavior tree, etc.
+
+## Tricks learned
+
+* Snap to floor: select an object then press `END` to snap it to the floor.
+* Snap to grid: select an object then press `CTRL + END` to snap its pivot point to the closest grid intersection.
+* Change grid size: use square brackets to either increase/decrease the grid size.
+* Rotate around an object: select an object, hold `ALT + Mouse 1` and move the mouse around.
+* Zoom-in/out in place: hold `Mouse 1` and then hold `C` to zoom in or `Z` to zoom out.
