@@ -9,7 +9,8 @@ class USoundCue;
 UENUM()
 enum class EFoodieType : uint8 {
     Regular,
-    PowerUp
+    PowerUp,
+    Fruit
 };
 
 UCLASS()
@@ -20,6 +21,7 @@ class UE4_PACMAN_API AFoodieActor : public AActor
 public:
     AFoodieActor();
     void Consume();
+    static bool IsFoodie(AActor* actor);
 
     DECLARE_EVENT(AFoodieActor, FFoodieEatenEvent)
     FFoodieEatenEvent& OnFoodieEaten() { return FoodieEatenEvent; }

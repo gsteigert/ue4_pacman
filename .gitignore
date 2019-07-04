@@ -9,6 +9,7 @@ Saved
 # Files
 .vscode
 .vs
+*.blend1
 *.VC.db
 *.opensdf
 *.opendb

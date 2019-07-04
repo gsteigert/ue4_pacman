@@ -48,8 +48,7 @@ void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] OnOverlapBegin(overlappedActor=%s, otherActor=%s)"),
         *overlappedActor->GetName(), *otherActor->GetName());
 
-    if (otherActor->ActorHasTag("Foodie.Regular")
-        || otherActor->ActorHasTag("Foodie.PowerUp")) {
+    if (AFoodieActor::IsFoodie(otherActor)) {
         Cast<AFoodieActor>(otherActor)->Consume();
     }
 }

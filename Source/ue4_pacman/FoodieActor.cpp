@@ -15,3 +15,9 @@ void AFoodieActor::Consume()
     FoodieEatenEvent.Broadcast();
     Destroy();
 }
+
+bool AFoodieActor::IsFoodie(AActor* actor) {
+    return actor->ActorHasTag("Foodie.Regular")
+        || actor->ActorHasTag("Foodie.PowerUp")
+        || actor->ActorHasTag("Foodie.Fruit");
+}
