@@ -20,6 +20,7 @@ class UE4_PACMAN_API AFoodieActor : public AActor
     
 public:
     AFoodieActor();
+    virtual void BeginPlay() override;
     void Consume();
     static bool IsFoodie(AActor* actor);
 
@@ -34,4 +35,6 @@ private:
 
     UPROPERTY(EditAnywhere, Category = "Setup")
     EFoodieType FoddieType = EFoodieType::Regular;
+
+    void ShowRandomMesh();
 };

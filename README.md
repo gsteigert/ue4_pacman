@@ -24,3 +24,8 @@ After pressing the `Play button`, just tap the single quote key. Then use the nu
 * Change grid size: use square brackets to either increase/decrease the grid size.
 * Rotate around an object: select an object, hold `ALT + Mouse 1` and move the mouse around.
 * Zoom-in/out in place: hold `Mouse 1` and then hold `C` to zoom in or `Z` to zoom out.
+
+## Logging
+
+* `check()` will halt execution with a meaningful error message
+* `ensure()` won't halt execution but will log an error and generate a debug call stack
