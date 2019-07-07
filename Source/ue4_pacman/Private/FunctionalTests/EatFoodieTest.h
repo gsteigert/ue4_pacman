@@ -26,5 +26,7 @@ protected:
 
 private:
     APacmanController* PacmanController;
-    void OnFoodieEaten();
+
+    UFUNCTION()
+    void OnFoodieEaten(EFoodieType foodieType);
 };

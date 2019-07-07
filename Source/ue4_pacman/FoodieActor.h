@@ -13,6 +13,8 @@ enum class EFoodieType : uint8 {
     Fruit
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FFoodieEatenEvent, EFoodieType, foodieType);
+
 UCLASS()
 class UE4_PACMAN_API AFoodieActor : public AActor
 {
@@ -23,13 +25,12 @@ public:
     virtual void BeginPlay() override;
     void Consume();
     static bool IsFoodie(AActor* actor);
-
-    DECLARE_EVENT(AFoodieActor, FFoodieEatenEvent)
     FFoodieEatenEvent& OnFoodieEaten() { return FoodieEatenEvent; }
 
-private:
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
     FFoodieEatenEvent FoodieEatenEvent;
 
+private:
     UPROPERTY(EditAnywhere, Category = "Setup")
     USoundCue* ConsumptionSound;
 

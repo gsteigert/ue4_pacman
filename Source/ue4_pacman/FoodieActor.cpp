@@ -36,7 +36,7 @@ void AFoodieActor::Consume()
     UE_LOG(LogTemp, Log, TEXT("[%s] Consuming self [type=%d]"), *GetName(), FoddieType);
 
     UGameplayStatics::PlaySound2D(this, ConsumptionSound);
-    FoodieEatenEvent.Broadcast();
+    FoodieEatenEvent.Broadcast(FoddieType);
     Destroy();
 }
 

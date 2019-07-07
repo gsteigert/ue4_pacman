@@ -15,7 +15,7 @@ void AEatFoodieTest::PrepareTest()
     LogMessage("[EatFoodieTest] PrepareTest()");
 
     PacmanController = Cast<APacmanController>(GetWorld()->GetFirstPlayerController());
-    TargetFoodie->OnFoodieEaten().AddUObject(this, &AEatFoodieTest::OnFoodieEaten);
+    TargetFoodie->OnFoodieEaten().AddDynamic(this, &AEatFoodieTest::OnFoodieEaten);
 }
 
 void AEatFoodieTest::StartTest()
@@ -38,7 +38,7 @@ void AEatFoodieTest::CleanUp()
     LogMessage("[EatFoodieTest] CleanUp()");
 }
 
-void AEatFoodieTest::OnFoodieEaten()
+void AEatFoodieTest::OnFoodieEaten(EFoodieType foodieType)
 {
     LogMessage("[EatFoodieTest] OnFoodieEaten()");
 
