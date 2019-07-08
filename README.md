@@ -27,6 +27,12 @@ Then use the numpad keys to toggle specific features, like navmesh, AI, behavior
 * Rotate around an object: select an object, hold `ALT + Mouse 1` and move the mouse around.
 * Zoom-in/out in place: hold `Mouse 1` and then hold `C` to zoom in or `Z` to zoom out.
 
+## String types
+
+* FName: lightweight, immutable and case insensitive strings that are shared throughout the game;
+* FText: used for all user-facing strings (supports auto-localization);
+* FString: allows text manipulation, therefore is more expensive than the alternatives.
+
 ## Logging
 
 * `check()` will halt execution with a meaningful error message
