@@ -1,6 +1,8 @@
 #include "TeleporterActor.h"
-#include "Engine\Classes\Components\SceneComponent.h"
-#include "Engine\Public\TimerManager.h"
+#include "Components/SceneComponent.h"
+#include "Engine/Public/TimerManager.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundCue.h"
 
 void ATeleporterActor::BeginPlay()
 {
@@ -48,6 +50,7 @@ void ATeleporterActor::TeleportToTarget(AActor* actor)
     if (ensureMsgf(targetSpawn != nullptr,
         TEXT("[%s] Target spawn location not found!"), *GetName()))
     {
+        UGameplayStatics::PlaySound2D(this, TeleportSound);
         actor->SetActorLocation(targetSpawn->GetComponentLocation());
         TeleportedEvent.Broadcast(this, Target);
     }
