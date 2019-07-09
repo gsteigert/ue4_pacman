@@ -33,12 +33,12 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintCallable)
     FFoodieEatenEvent FoodieEatenEvent;
 
+    UPROPERTY(EditAnywhere, Category = "Setup")
+    EFoodieType FoddieType = EFoodieType::Regular;
+
 private:
     UPROPERTY(EditAnywhere, Category = "Setup")
     USoundCue* ConsumptionSound;
-
-    UPROPERTY(EditAnywhere, Category = "Setup")
-    EFoodieType FoddieType = EFoodieType::Regular;
 
     void ShowRandomMesh();
 };
