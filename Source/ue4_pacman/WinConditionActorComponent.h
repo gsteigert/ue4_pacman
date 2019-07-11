@@ -7,7 +7,12 @@
 enum class EFoodieType : uint8;
 
 /**
- * Manages the regular foodie count to detect level completion.
+ * Fired when the level is completed (all regular foodies are eaten).
+ */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FLevelCompletedEvent);
+
+/**
+ * Detect level completion.
  */
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class UE4_PACMAN_API UWinConditionActorComponent : public UActorComponent
@@ -16,14 +21,22 @@ class UE4_PACMAN_API UWinConditionActorComponent : public UActorComponent
 
 public:
     UWinConditionActorComponent();
-
-    UPROPERTY(BlueprintReadOnly)
-    int RegularFoodiesLeft;
+    bool IsLevelCompleted() const { return LevelCompleted; };
+    FLevelCompletedEvent& LevelCompletedEvent() { return OnLevelCompleted; }
 
 protected:
     virtual void BeginPlay() override;
 
+    UPROPERTY(BlueprintReadOnly)
+    int RegularFoodiesLeft = 0;
+
+    UPROPERTY(BlueprintReadOnly)
+    bool LevelCompleted = false;
+
 private:
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    FLevelCompletedEvent OnLevelCompleted;
+
     UFUNCTION()
     void OnRegularFoodieEaten(EFoodieType foodieType);
 
