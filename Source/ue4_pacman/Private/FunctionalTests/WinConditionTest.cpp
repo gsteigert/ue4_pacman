@@ -16,9 +16,9 @@ void AWinConditionTest::PrepareTest()
     Super::PrepareTest();
     LogMessage("[WinConditionTest] PrepareTest()");
 
-    checkf(Foodie1 != nullptr, TEXT("Foodie1 not set"));
-    checkf(Foodie2 != nullptr, TEXT("Foodie2 not set"));
-    checkf(Fruit != nullptr, TEXT("Fruit not set"));
+    checkf(Foodie1, TEXT("Foodie1 not set"));
+    checkf(Foodie2, TEXT("Foodie2 not set"));
+    checkf(Fruit, TEXT("Fruit not set"));
 
     AGameModeBase* gameMode = GetWorld()->GetAuthGameMode();
     WinConditionComponent = gameMode->FindComponentByClass<UWinConditionActorComponent>();

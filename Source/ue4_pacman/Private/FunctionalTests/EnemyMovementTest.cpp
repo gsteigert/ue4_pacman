@@ -1,5 +1,6 @@
 #include "EnemyMovementTest.h"
 #include "Engine/World.h"
+#include "BlueprintUtils.h"
 
 AEnemyMovementTest::AEnemyMovementTest()
 {
@@ -15,6 +16,14 @@ void AEnemyMovementTest::PrepareTest()
     LogMessage("[EnemyMovementTest] PrepareTest()");
 
     Pacman->OnPacmanDied().AddUObject(this, &AEnemyMovementTest::OnPacmanDied);
+}
+
+void AEnemyMovementTest::StartTest()
+{
+    Super::StartTest();
+    LogMessage("[EnemyMovementTest] StartTest()");
+
+    BlueprintUtils::SetProperty<bool>(Enemy, "Frozen", false);
 }
 
 void AEnemyMovementTest::OnPacmanDied()

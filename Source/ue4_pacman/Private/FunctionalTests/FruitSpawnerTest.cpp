@@ -16,7 +16,7 @@ void AFruitSpawnerTest::PrepareTest()
     Super::PrepareTest();
     LogMessage("[AFruitSpawnerTest] PrepareTest()");
 
-    checkf(FruitSpawner != nullptr, TEXT("FruitSpawner not set"));
+    checkf(FruitSpawner, TEXT("FruitSpawner not set"));
 
     // every second, the spawn is scheduled to [0.70-0.80] seconds;
     // in case the spawn location is available at that time, a fruit is spawned;
