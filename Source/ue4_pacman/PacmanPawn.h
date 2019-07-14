@@ -14,25 +14,28 @@ class UE4_PACMAN_API APacmanPawn : public APawn
 public:
     APacmanPawn();
     virtual void Tick(const float DeltaTime) override;
-
     void SetDirection(const FVector value);
+    bool IsFrozen() { return Frozen; }
 
     DECLARE_EVENT(APacmanPawn, FPacmanDiedEvent)
     FPacmanDiedEvent& OnPacmanDied() { return PacmanDiedEvent; }
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-    bool Frozen = true;
+    UFUNCTION(BlueprintCallable)
+    void SetFrozen(bool value) { Frozen = value; };
+
+    UFUNCTION(BlueprintCallable)
+    void Die();
 
 protected:
     virtual void BeginPlay() override;
-    void Die();
+
+    UPROPERTY(BlueprintReadOnly, Category = "State")
+    bool Frozen = true;
 
 private:
-    UFUNCTION()
-    void OnHit(AActor* selfActor, AActor* otherActor, FVector normalImpulse, const FHitResult& hit);
-
     UFUNCTION()
     void OnOverlapBegin(AActor* overlappedActor, AActor* otherActor);
 
     FPacmanDiedEvent PacmanDiedEvent;
+
 };

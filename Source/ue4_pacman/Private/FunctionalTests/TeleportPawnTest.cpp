@@ -28,7 +28,7 @@ void ATeleportPawnTest::StartTest()
     LogMessage("[TeleportPawnTest] StartTest()");
 
     PacmanController->MoveRightPressed();
-    Cast<APacmanPawn>(PacmanController->GetPawn())->Frozen = false;
+    Cast<APacmanPawn>(PacmanController->GetPawn())->SetFrozen(false);
 }
 
 void ATeleportPawnTest::Tick(float DeltaSeconds)

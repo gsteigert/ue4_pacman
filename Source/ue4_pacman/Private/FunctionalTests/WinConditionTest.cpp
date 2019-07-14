@@ -36,7 +36,7 @@ void AWinConditionTest::StartTest()
     LogMessage("[WinConditionTest] StartTest()");
 
     PacmanController->MoveRightPressed();
-    Cast<APacmanPawn>(PacmanController->GetPawn())->Frozen = false;
+    Cast<APacmanPawn>(PacmanController->GetPawn())->SetFrozen(false);
 }
 
 void AWinConditionTest::OnFoodie1Eaten(EFoodieType foodieType)

@@ -12,7 +12,7 @@ enum class EFoodieType : uint8;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FLevelCompletedEvent);
 
 /**
- * Detect level completion.
+ * Detects level completion.
  */
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class UE4_PACMAN_API UWinConditionActorComponent : public UActorComponent

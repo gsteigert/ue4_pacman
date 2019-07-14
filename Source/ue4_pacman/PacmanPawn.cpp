@@ -1,4 +1,5 @@
 #include "PacmanPawn.h"
+#include "EnemyPawn.h"
 #include "FoodieActor.h"
 
 APacmanPawn::APacmanPawn()
@@ -10,7 +11,6 @@ void APacmanPawn::BeginPlay()
 {
     Super::BeginPlay();
 
-    OnActorHit.AddDynamic(this, &APacmanPawn::OnHit);
     OnActorBeginOverlap.AddDynamic(this, &APacmanPawn::OnOverlapBegin);
 }
 
@@ -26,10 +26,14 @@ void APacmanPawn::Tick(float DeltaTime)
 
 void APacmanPawn::SetDirection(const FVector direction)
 {
-    // imagine an airplane making these rotational movements and you'll end up with:
+    // rotation uses pitch, yaw and roll concepts;
+    // given that X is forward, Z is up and Y is right:
     // Pitch = around Y axis, Yaw = around the Z axis, Roll = around the X axis
 
-    if (direction == FVector::UpVector) {
+    if (Frozen) {
+        // do nothing
+    }
+    else if (direction == FVector::UpVector) {
         SetActorRotation(FRotator(0, 270, 0));
     }
     else if (direction == FVector::DownVector) {
@@ -50,16 +54,6 @@ void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
 
     if (AFoodieActor::IsFoodie(otherActor)) {
         Cast<AFoodieActor>(otherActor)->Consume();
-    }
-}
-
-void APacmanPawn::OnHit(AActor* selfActor, AActor* otherActor, FVector normalImpulse, const FHitResult& hit)
-{
-    if (otherActor->ActorHasTag("Enemy")) {
-        UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] OnHit(otherActor=%s, hit=%s)"),
-            *otherActor->GetName(), *hit.ToString());
-
-        Die();
     }
 }
 
