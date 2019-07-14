@@ -93,6 +93,7 @@ void AWinConditionTest::OnLevelCompleted()
     AssertEqual_Bool(LevelCompletedEventReceived, true, "[OnLevelCompleted] LevelCompletedEventReceived");
     AssertEqual_Bool(WinConditionComponent->IsLevelCompleted(), true, "[OnLevelCompleted] WinConditionComponent->IsLevelCompleted()");
 
+    // default here means "finish the test and fail in case any assertion has failed"
     FinishTest(EFunctionalTestResult::Default, "Level completed");
 }
 

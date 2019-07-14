@@ -13,6 +13,8 @@ enum class EEnemyState : uint8 {
     Dead UMETA(DisplayName = "Dead")
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnemyStateChangedEvent, EEnemyState, newState);
+
 UCLASS()
 class UE4_PACMAN_API AEnemyPawn : public APawn
 {
@@ -24,5 +26,20 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "References")
     AActor* Origin = nullptr;
+
+    FEnemyStateChangedEvent& OnStateChanged() { return StateChangedEvent; }
+
+    UFUNCTION(BlueprintCallable)
+    void Hunt();
+
+    UFUNCTION(BlueprintCallable)
+    void Run();
+
+    UFUNCTION(BlueprintCallable)
+    void Die();
+
+private:
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    FEnemyStateChangedEvent StateChangedEvent;
 
 };
