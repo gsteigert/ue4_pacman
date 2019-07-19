@@ -6,6 +6,8 @@
 
 class AFoodieActor;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPacmanDiedEvent);
+
 UCLASS()
 class UE4_PACMAN_API APacmanPawn : public APawn
 {
@@ -17,7 +19,6 @@ public:
     void SetDirection(const FVector value);
     bool IsFrozen() { return Frozen; }
 
-    DECLARE_EVENT(APacmanPawn, FPacmanDiedEvent)
     FPacmanDiedEvent& OnPacmanDied() { return PacmanDiedEvent; }
 
     UFUNCTION(BlueprintCallable)
@@ -36,6 +37,7 @@ private:
     UFUNCTION()
     void OnOverlapBegin(AActor* overlappedActor, AActor* otherActor);
 
+    UPROPERTY(BlueprintAssignable, BlueprintCallable)
     FPacmanDiedEvent PacmanDiedEvent;
 
 };

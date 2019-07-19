@@ -59,13 +59,7 @@ void APacmanPawn::OnOverlapBegin(AActor* overlappedActor, AActor* otherActor)
 
 void APacmanPawn::Die()
 {
-    // avoid multiple die events from being thrown
-    if (IsPendingKillPending()) {
-        return;
-    }
-
     UE_LOG(LogTemp, Log, TEXT("[PacmanPawn] Die()"));
 
     PacmanDiedEvent.Broadcast();
-    Destroy();
 }

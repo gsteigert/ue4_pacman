@@ -13,9 +13,6 @@ enum class EFoodieType : uint8 {
     Fruit
 };
 
-/**
- * Declare a dynamic multicast event to make the foodie event available to blueprints.
- */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FFoodieEatenEvent, EFoodieType, foodieType);
 
 UCLASS()

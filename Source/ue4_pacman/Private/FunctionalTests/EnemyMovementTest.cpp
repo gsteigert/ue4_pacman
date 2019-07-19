@@ -15,7 +15,7 @@ void AEnemyMovementTest::PrepareTest()
     Super::PrepareTest();
     LogMessage("[EnemyMovementTest] PrepareTest()");
 
-    Pacman->OnPacmanDied().AddUObject(this, &AEnemyMovementTest::OnPacmanDied);
+    Pacman->OnPacmanDied().AddDynamic(this, &AEnemyMovementTest::OnPacmanDied);
 }
 
 void AEnemyMovementTest::StartTest()

@@ -15,7 +15,7 @@ void AKillEnemyTest::PrepareTest()
     Super::PrepareTest();
     LogMessage("[KillEnemyTest] PrepareTest()");
 
-    Pacman->OnPacmanDied().AddUObject(this, &AKillEnemyTest::OnPacmanDied);
+    Pacman->OnPacmanDied().AddDynamic(this, &AKillEnemyTest::OnPacmanDied);
     Enemy->OnStateChanged().AddDynamic(this, &AKillEnemyTest::OnEnemyStateChanged);
 }
 

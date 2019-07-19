@@ -26,3 +26,12 @@ void AEnemyPawn::Die()
 
     StateChangedEvent.Broadcast(state);
 }
+
+void AEnemyPawn::Idle()
+{
+    UE_LOG(LogTemp, Log, TEXT("[%s] Idle()"), *GetName());
+
+    state = EEnemyState::Idle;
+
+    StateChangedEvent.Broadcast(state);
+}

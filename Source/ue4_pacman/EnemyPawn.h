@@ -10,7 +10,8 @@ UENUM(BlueprintType)
 enum class EEnemyState : uint8 {
     Default UMETA(DisplayName = "Default"),
     Vulnerable UMETA(DisplayName = "Vulnerable"),
-    Dead UMETA(DisplayName = "Dead")
+    Dead UMETA(DisplayName = "Dead"),
+    Idle UMETA(DisplayName = "Idle")
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnemyStateChangedEvent, EEnemyState, newState);
@@ -37,6 +38,9 @@ public:
 
     UFUNCTION(BlueprintCallable)
     void Die();
+
+    UFUNCTION(BlueprintCallable)
+    void Idle();
 
 private:
     UPROPERTY(BlueprintAssignable, BlueprintCallable)
