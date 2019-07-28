@@ -4,16 +4,14 @@
 #include "FunctionalTest.h"
 #include "PacmanPawn.h"
 #include "EnemyPawn.h"
-#include "EnemyMovementTest.generated.h"
+#include "EnemyStatesTest.generated.h"
 
 UCLASS()
-class AEnemyMovementTest : public AFunctionalTest
+class AEnemyStatesTest : public AFunctionalTest
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-    AEnemyMovementTest();
-
     UPROPERTY(EditAnywhere, Category = "Test References")
     APacmanPawn* Pacman;
 
@@ -24,7 +22,13 @@ protected:
     virtual void PrepareTest() override;
     virtual void StartTest() override;
 
-private:
     UFUNCTION()
-    void OnPacmanDied();
+    virtual void OnPacmanDied();
+
+    UFUNCTION()
+    virtual void OnEnemyStateChanged(EEnemyState newState);
+
+    bool DidPacmanDie = false;
+    int EventCounter = 0;
+
 };
