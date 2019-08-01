@@ -1,4 +1,5 @@
 #include "FoodieActor.h"
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundCue.h"
 
