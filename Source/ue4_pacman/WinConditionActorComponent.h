@@ -27,11 +27,16 @@ public:
 protected:
     virtual void BeginPlay() override;
 
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadOnly, Category = "General")
     int RegularFoodiesLeft = 0;
 
-    UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadOnly, Category = "General")
     bool LevelCompleted = false;
+
+    // The victory notification is only sent after this threshold is reached;
+    // Can be changed through blueprints to ease testing
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "General")
+    int Threshold = 0;
 
 private:
     UPROPERTY(BlueprintAssignable, BlueprintCallable)

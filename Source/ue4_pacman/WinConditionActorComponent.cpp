@@ -40,7 +40,7 @@ void UWinConditionActorComponent::OnRegularFoodieEaten(EFoodieType foodieType)
     RegularFoodiesLeft--;
     UE_LOG(LogTemp, Log, TEXT("[WinConditionActorComponent] RegularFoodiesLeft=%d"), RegularFoodiesLeft);
 
-    if (RegularFoodiesLeft <= 0)
+    if (RegularFoodiesLeft <= Threshold)
     {
         UE_LOG(LogTemp, Log, TEXT("[WinConditionActorComponent] Level completed"));
 
